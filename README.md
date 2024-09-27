@@ -4,76 +4,172 @@ This is a new [**React Native**](https://reactnative.dev) project, bootstrapped 
 
 >**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
 
-## Step 1: Start the Metro Server
+# Blog App with Infinite Scroll, Theming, and Offline Handling
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+This **React Native** blog app features infinite scrolling, dynamic theming (light/dark modes), and offline handling. Users can read and interact with blog content, toggle between themes, and receive notifications when the network status changes.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Features
 
-```bash
-# using npm
-npm start
+- **Infinite Scrolling**: Automatically loads more blogs as the user scrolls.
+- **Dynamic Theming**: Supports both light and dark themes that can be toggled dynamically.
+- **Offline Handling**: Displays toast notifications for connection loss and reconnection.
+- **Blog Interactions**: Users can like and share blogs, and view comments.
+- **Smooth UI**: Optimized for performance with `FlatList` and placeholder images for smooth scrolling.
 
-# OR using Yarn
-yarn start
-```
+## Table of Contents
 
-## Step 2: Start your Application
+- [Installation](#installation)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
+- [Features](#features)
+- [Components](#components)
+- [Hooks](#hooks)
+- [Context](#context)
+- [Contributing](#contributing)
+- [License](#license)
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## Installation
 
-### For Android
+1. Clone the repository:
 
-```bash
-# using npm
-npm run android
+   ```bash
+   git clone https://github.com/your-username/blog-app.git
 
-# OR using Yarn
-yarn android
-```
+2. Navigate to the project directory:
 
-### For iOS
+   ```bash
+      cd blog-app
+   ```
+3. Install Dependencies:
 
-```bash
-# using npm
-npm run ios
+   ```bash
+      npm install
+   ```
+4. Run the app:
+   ```bash
+      npx react-native run-android # For Android
+      npx react-native run-ios     # For iOS
 
-# OR using Yarn
-yarn ios
-```
+## Usage
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+ *Blog List*: The main screen lists blogs with infinite scrolling.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+ *Blog Details*: Users can tap on a blog to view full details.
 
-## Step 3: Modifying your App
+ *Like and Share*: Users can interact with blog posts by liking and sharing them.
 
-Now that you have successfully run the app, let's modify it.
+ *Toggle Theme*: Switch between light and dark modes using the theme toggle button.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+ *Offline Handling*: Get notified when your device loses or regains internet connectivity.
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+
+## Folder Structure
+   ```bash
+      .
+├── src
+│   ├── assets                 # Static images and other assets
+│   ├── components             # Reusable UI components
+│   │   ├── BlogCard.js        # UI component to display individual blog info
+│   │   ├── BlogList.js        # List of blogs with infinite scroll
+│   │   ├── CommentSection.js  # Component for displaying and adding comments
+│   │   ├── LikeButton.js      # Button for liking a blog post
+│   │   ├── ShareButton.js     # Button for sharing a blog post
+│   │   └── ToggleTheme.js     # Component for toggling light/dark themes
+│   ├── context                # React Context for global state management
+│   │   ├── BlogContext.js     # Manages blog data and pagination
+│   │   ├── ThemeContext.js    # Manages theme settings (light/dark mode)
+│   │   └── UserContext.js     # Manages user session data and preferences
+│   ├── data                   # Sample static data for blogs and users
+│   │   ├── blogs.js           # Mock data for blog posts
+│   │   └── users.js           # Mock data for users
+│   ├── hooks                  # Custom React hooks
+│   │   └── useInfiniteScroll.js # Hook for handling infinite scroll functionality
+│   ├── screens                # Application screens
+│   │   ├── BlogDetailScreen.js # Screen for displaying blog details
+│   │   └── HomeScreen.js      # Main screen displaying the blog list
+│   ├── utils                  # Utility functions and constants
+│   │   └── theme.js           # Utility functions for managing themes
+└── App.js                     # Main entry point for the app
+   ```
+Components
+----------
+
+### BlogCard
+
+*   Displays a summary of a blog, including the title, image, and preview text.
+    
+
+### BlogList
+
+*   Displays a list of blogs with infinite scrolling using the FlatList component.
+    
+
+### CommentSection
+
+*   Displays a comment section where users can view comments to a blog.
+    
+
+### LikeButton
+
+*   A button that allows users to "like" a blog post, showing a like count.
+    
+
+### ShareButton
+
+*   A button that allows users to share blog posts via social media or other platforms.
+    
+
+### ToggleTheme
+
+*   A toggle switch to change the app's theme between light and dark mode.
+    
+
+Hooks
+-----
+
+### useInfiniteScroll
+
+*   Custom hook used to load more blogs as the user scrolls. Monitors the hasMore state to load additional content or notify when all blogs have been loaded.
+    
+
+Context
+-------
+
+### BlogContext
+
+*   Provides state management for blogs, including pagination and infinite scroll.
+    
+
+### ThemeContext
+
+*   Handles the theme toggling between light and dark modes, sharing the current theme state throughout the app.
+    
+
+### UserContext
+
+*   Manages user-related information like preferences and session data.
+    
+
+Contributing
+------------
+
+Feel free to fork this project, submit issues, or create pull requests!
+
+1.  Fork the repository.
+    
+2.  Create a new feature branch: git checkout -b feature/your-feature-name.
+    
+3.  Commit your changes: git commit -m 'Add new feature'.
+    
+4.  Push to the branch: git push origin feature/your-feature-name.
+    
+5.  Open a pull request.
+
+
+
 
 ## Congratulations! :tada:
 
 You've successfully run and modified your React Native App. :partying_face:
 
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+\
