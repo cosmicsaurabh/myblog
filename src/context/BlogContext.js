@@ -11,7 +11,7 @@ export const BlogProvider = ({ children }) => {
     // console.log(blogs.length);
     if (!hasMore) return;
 
-    const startIndex = page * itemsPerPage;
+    const startIndex = (page-1) * itemsPerPage;
     const newBlogs = blogData.blogs.slice(startIndex, startIndex + itemsPerPage); 
     // console.log(newBlogs)
     if (newBlogs.length < itemsPerPage) {

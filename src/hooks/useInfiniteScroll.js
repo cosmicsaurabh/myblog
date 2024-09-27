@@ -6,12 +6,12 @@ const useInfiniteScroll = () => {
   const [showNoMoreBlogs, setShowNoMoreBlogs] = useState(false); 
 
   useEffect(() => {
-    fetchBlogs(0); 
+    fetchBlogs(1); 
   }, []);
 
   const loadMoreBlogs = () => {
     if (hasMore) {
-      const nextPage = Math.ceil(blogs.length / 5) + 1; 
+      const nextPage = Math.ceil(blogs.length / 5)  +1; 
       fetchBlogs(nextPage);
     } else {
       setShowNoMoreBlogs(true);

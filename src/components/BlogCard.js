@@ -19,6 +19,7 @@ const BlogCard = ({blog, showFullContent}) => {
         onLoadEnd={() => setLoading(false)}
         onError={handleImageError} 
       />
+      <Text style={[styles.title, {color: theme.text}]}>{blog.id}</Text>
       <Text style={[styles.title, {color: theme.text}]}>{blog.title}</Text>
       <Text
         numberOfLines={showFullContent ? undefined : 2}
